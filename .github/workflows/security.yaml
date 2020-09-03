@@ -1,0 +1,15 @@
+name: Security Horusec
+
+on: [push]
+
+jobs:
+  horusec:
+    name: horusec
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Horusec Security Test
+      run: |
+        curl -fsSL https://horus-assets.s3.amazonaws.com/install.sh | bash -s v1-0-19-alpha-1
+        horus start -p ./
